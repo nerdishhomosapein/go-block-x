@@ -44,7 +44,10 @@ func HashFromBytes(b []byte) Hash {
 
 func RandomBytes(size int) []byte {
 	token := make([]byte, size)
-	rand.Read(token)
+	_, err := rand.Read(token)
+	if err != nil {
+		panic(err)
+	}
 	return token
 }
 
